@@ -40,10 +40,6 @@ The **Blog App** is crafted to function as a comprehensive blog website, offerin
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
