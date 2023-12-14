@@ -17,9 +17,10 @@ default: &default
   encoding: unicode
   database: blog_app_development
   pool: 5
-  username: gojo_satoru
-  password: gojoSatoru#
+  username: postgres
+  password: BurSqlHan#007
   host: localhost
+  port: 5432
 
 development:
   <<: *default
@@ -82,5 +83,5 @@ test:
 production:
   <<: *default
   database: blog_app_production
-  username: gojo_satoru
-  password: gojoSatoru#
+  username: postgres
+  password: BurSqlHan#007
