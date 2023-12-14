@@ -7,3 +7,19 @@ db/schema.rb linguist-generated
 vendor/* linguist-vendored
 config/credentials/*.yml.enc diff=rails_credentials
 config/credentials.yml.enc diff=rails_credentials
+
+
+# Set to LF (Unix-style) line endings for specific file types
+*.rb text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+
+
+# Set to CRLF (Windows-style) line endings for specific file types
+*.bat text eol=crlf
+*.txt text eol=crlf
+
+
+# Do not perform any line ending conversion for binary files
+*.jpg binary
+*.png binary
