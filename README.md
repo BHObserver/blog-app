@@ -20,7 +20,7 @@
 
 # 📖 Blog-app <a name="about-project"></a>
 
-**The Blog app is designed to serve as a typical blog website. It aims to deliver a complete and operational web platform where users can explore a catalog of articles and engage with them through actions like leaving comments and expressing their appreciation by liking posts..
+### The **Blog App** is crafted to function as a comprehensive blog website, offering users a seamless platform to discover a diverse catalog of articles. Its purpose is to facilitate user interaction through features such as commenting and expressing appreciation through post likes. The goal is to provide a fully functional web experience for users to engage with and enjoy the content available on the platform.
 
 ## 🛠 Built With <a name="built-with"></a>
 
