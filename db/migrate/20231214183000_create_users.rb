@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration[7.1]
+class CreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
       t.string :name
@@ -6,8 +6,7 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.text :bio
       t.datetime :updated_at
       t.datetime :created_at
-      t.integer :post_counter
-
+      t.integer :post_counter, default: 0
       t.timestamps
     end
   end
