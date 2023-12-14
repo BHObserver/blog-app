@@ -22,12 +22,13 @@
 
 The **Blog App** is crafted to function as a comprehensive blog website, offering users a seamless platform to discover a diverse catalog of articles. Its purpose is to facilitate user interaction through features such as commenting and expressing appreciation through post likes. The goal is to provide a fully functional web experience for users to engage with and enjoy the content available on the platform.
 
-## 🛠 Built With <a name="built-with"></a>
+## 🛠 Built With <a name="built-with">Ruby</a>
 
 ### Tech Stack <a name="tech-stack"></a>
-
-
 - **Ruby**
+- **PostgreSql**
+
+
 
 ### Key Features <a name="key-features"></a>
 
@@ -42,8 +43,6 @@ The **Blog App** is crafted to function as a comprehensive blog website, offerin
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-## 🛠 Built With <a name="built-with">Ruby</a>
 
 ## Getting Started
 
