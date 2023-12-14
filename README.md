@@ -43,16 +43,7 @@ The **Blog App** is crafted to function as a comprehensive blog website, offerin
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## 🛠 Built With <a name="built-with"></a>
-
-### Tech Stack <a name="tech-stack"></a>
-
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
-  </ul>
-</details>
+## 🛠 Built With <a name="built-with">Ruby</a>
 
 ## Getting Started
 
