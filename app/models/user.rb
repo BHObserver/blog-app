@@ -3,8 +3,12 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  # Custom method: Updates the posts counter for a user
+  # Custom method: Returns the 3 most recent posts for a given user
+  def recent_posts(limit = 3)
+    posts.order(created_at: :desc).limit(limit)
+  end
 
+  # Custom method: Updates the posts counter for a user
   def update_user_posts_counter
     user.update(post_counter: user.posts.count)
   end
