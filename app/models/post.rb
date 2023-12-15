@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :likes
 
+  after_save :update_user_posts_counter
+
   # Custom method: Updates the posts counter for a user
   def update_user_posts_counter
     user.update(post_counter: user.posts.count)
