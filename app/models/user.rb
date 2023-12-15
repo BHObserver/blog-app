@@ -18,5 +18,4 @@ class User < ApplicationRecord
   def update_post_likes_counter
     update(likes_counter: likes.count)
   end
-
 end
