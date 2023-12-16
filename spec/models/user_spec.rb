@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
   end
 
   # Method Test
-describe 'custom methods' do
+  describe 'custom methods' do
     it 'returns three most recent posts' do
       FactoryBot.create_list(:post, 0, author: user)
       recent_posts = FactoryBot.create_list(:post, 0, author: user, created_at: 1.day.ago)
@@ -39,8 +39,8 @@ describe 'custom methods' do
 
     it 'returns five most recent comments' do
       post = FactoryBot.create(:post, author: user)
-      FactoryBot.create_list(:comment, 7, user: user, post: post, created_at: 2.days.ago)
-      recent_comments = FactoryBot.create_list(:comment, 5, user: user, post: post)
+      FactoryBot.create_list(:comment, 7, user:, post:, created_at: 2.days.ago)
+      recent_comments = FactoryBot.create_list(:comment, 5, user:, post:)
 
       expect(user.recent_comments).to eq(recent_comments.reverse)
     end
@@ -49,7 +49,7 @@ describe 'custom methods' do
       post = FactoryBot.create(:post, author: user)
       expect(post.likes_counter).to eq(0)
 
-      FactoryBot.create(:like, user: user, post: post)
+      FactoryBot.create(:like, user:, post:)
       post.reload
 
       expect(post.likes_counter).to eq(0)
