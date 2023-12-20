@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   # Custom method: Updates the posts counter for a user
   def update_user_posts_counter
-    user.update(post_counter: user.posts.count)
+    user.update(posts_counter: user.posts.count)
   end
 
   # Custom method: Returns the 5 most recent comments for a given post
@@ -22,4 +22,7 @@ class User < ApplicationRecord
   def update_post_likes_counter
     update(likes_counter: likes.count)
   end
+
+  validates :name, presence: true
+  validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end
