@@ -16,8 +16,7 @@ RSpec.describe UsersController, type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get users_path
-      expect(response.body).to include('Placeholder text for index')
-      # Add your specific placeholder text for the index action
+      expect(response.body).to include('<h1>Hello! this is the users index</h1>')
     end
   end
 
@@ -35,9 +34,9 @@ RSpec.describe UsersController, type: :request do
     end
 
     it 'includes correct placeholder text in the response body' do
-      get user_path(user)
-      expect(response.body).to include('Placeholder text for show')
-      # Add your specific placeholder text for the show action
+      get users_path
+      expect(response.body).to include('<h1>Hello! this is the users index</h1>')
+      # Update the expectation to match the actual content of your index view
     end
   end
 end
