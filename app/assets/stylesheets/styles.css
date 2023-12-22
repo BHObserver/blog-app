@@ -1,0 +1,63 @@
+/* styles.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-info .img {
+    margin-right: 20px;
+  }
+  
+  .user-photo {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    border-radius: 50%; /* Make it a circular image */
+    object-fit: cover;
+  }
+  
+  .user h2 {
+    margin: 0;
+  }
+  
+  .post {
+    margin-bottom: 20px;
+  }
+  
+  .comments {
+    margin-top: 20px;
+  }
+  
+  .comment {
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .flash {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .flash.notice {
+    background-color: #2ecc71;
+  }
+  
+  .flash.alert {
+    background-color: #e74c3c;
+  }
+  
