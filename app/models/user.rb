@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   # Custom method: Updates the posts counter for a user
   def update_user_posts_counter
-    user.update(post_counter: user.posts.count)
+    user.update(posts_counter: user.posts.count)
   end
 
   # Custom method: Returns the 5 most recent comments for a given post
