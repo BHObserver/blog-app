@@ -1,8 +1,16 @@
 /* styles.css */
 
-.container {
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .container {
     max-width: 800px;
     margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .user-info {
@@ -16,18 +24,47 @@
   }
   
   .user-photo {
-    width: 100px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
-    border-radius: 50%; /* Make it a circular image */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #fff;
+  }
+  
+  .user-details {
+    flex-grow: 1;
   }
   
   .user h2 {
     margin: 0;
+    color: #333;
+  }
+  
+  .user p {
+    margin: 0;
+    color: #777;
   }
   
   .post {
     margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .post h4 {
+    margin: 0 0 10px;
+    color: #333;
+  }
+  
+  .post p {
+    margin: 0 0 15px;
+    color: #555;
+  }
+  
+  .count {
+    color: #777;
   }
   
   .comments {
@@ -36,6 +73,10 @@
   
   .comment {
     margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
   }
   
   .button {
