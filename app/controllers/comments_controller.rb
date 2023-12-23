@@ -3,11 +3,12 @@ class CommentsController < ApplicationController
 
   def new
     store_referer
+
     @comment = Comment.new
   end
 
   def create
-    @comment = @post.comments.build(comment_params.merge(user_id: current_user.id))
+    @comment = @post.comments.build(comment_params.merge(user_id: @user.id))
 
     if @comment.save
       flash[:success] = 'Comment saved successfully'
