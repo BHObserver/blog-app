@@ -9,13 +9,13 @@
     </div>
   </div>
 
-  <% @posts.limit(2).each do |post| %>
+  <% @posts.each_with_index do |post, index| %>
     <div class="post">
-      <div class="top-bar">
-        <h4>Post📝</h4>
-        <p class="count">Comments:<%= post.comments.count %>💬 | Likes:<%= post.likes.count %> 👍</p>
-      </div>
-      <p><%= post.text %></p>
+    <div class="top-bar">
+      <h4>📝 Post <%= index + 1 %>: <%= link_to post.title, user_post_path(@user, post) %></h4>
+      <p class="count">Comments:<%= post.comments.count %>💬 | Likes:<%= post.likes.count %>👍</p>
+    </div>
+    <p><%= post.text %></p>
 
       <div class="comments">
         <% post.recent_comments.each do |comment| %>
