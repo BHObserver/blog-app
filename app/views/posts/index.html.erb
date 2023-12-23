@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <% @posts.limit(2).each do |post| %>
+  <% @posts.each do |post| %>
     <div class="post">
       <div class="top-bar">
         <h4>Post📝</h4>
@@ -25,7 +25,7 @@
         <% end %>
       </div>
 
-      <%= render 'likes/new', user: @user, post: post %>
+
     </div>
   <% end %>
 
