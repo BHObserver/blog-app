@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="user-info">
+    <div class="img">
+      <%= image_tag @user.photo, alt: "User Photo", class: "user-photo" %>
+    </div>
+    <div class="user">
+      <h2><%= link_to @user.name, user_path(@user) %></h2>
+      <p><strong>Number of Posts:📝</strong> <%= @user.posts.count %></p>
+    </div>
+  </div>
+
+  <% @posts.limit(2).each do |post| %>
+    <div class="post">
+      <div class="top-bar">
+        <h4>Post📝</h4>
+        <p class="count">Comments:<%= post.comments.count %>💬 | Likes:<%= post.likes.count %> 👍</p>
+      </div>
+      <p><%= post.text %></p>
+
+      <div class="comments">
+        <% post.recent_comments.each do |comment| %>
+          <div class="comment">
+            <p> <%= link_to comment.user.name, user_path(comment.user) %>: <%= comment.text %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to 'Pagination', user_posts_path(@user), class: 'button' %>
+  <%= link_to 'Create New Post 📝', new_user_post_path(@user), class: 'button' %>
+</div>
