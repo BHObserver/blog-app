@@ -1,13 +1,5 @@
 <div class="container">
-  <div class="user-info">
-    <div class="img">
-      <%= image_tag @user.photo, alt: "User Photo", class: "user-photo" %>
-    </div>
-    <div class="user-details">
-      <h2><%= @user.name %></h2>
-      <p><strong>Number of Posts: 📝</strong> <%= @user.posts.count %></p>
-    </div>
-  </div>
+  <%= render partial: 'user', locals: { user: @user } %>
 
   <div class="user-bio">
     <p><strong>Bio:</strong></p>
@@ -18,7 +10,7 @@
     <div class="post">
       <h4>📝 Post <%= index + 1 %>: <%= link_to post.title, user_post_path(@user, post) %></h4>
       <p><%= post.text %></p>
-      <p class="count">Comments: 💬 <%= post.comments.count %> | Likes: 📝 <%= post.likes.count %></p>
+      <p class="count">Comments: 💬 <%= post.comments.count %> | Likes: 👍 <%= post.likes.count %></p>
     </div>
   <% end %>
 
