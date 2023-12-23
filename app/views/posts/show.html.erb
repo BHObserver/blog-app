@@ -6,9 +6,11 @@
   <% end %>
 
   <div class="post">
-    <h4>Post <%= @post.title %></h4>
-    <p class="count">Comments:💬<%= @post.comments.count %> | Likes:👍<%= @post.likes.count %></p>
-    <p><%= @post.text %></p>
+    <div class="top-bar">
+      <h4>Post <%= @post.title %></h4>
+      <p class="count">Comments:💬<%= @post.comments.count %> | Likes:👍<%= @post.likes.count %></p>
+    </div>
+      <p><%= @post.text %></p>
   </div>
 
   <div class="comments">
