@@ -1,7 +1,7 @@
 /* styles.css */
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: #f5f5f5;
   }
   
@@ -102,3 +102,12 @@ body {
     background-color: #e74c3c;
   }
   
+
+  a {
+    text-decoration: none;
+  }
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+  }
