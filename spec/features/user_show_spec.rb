@@ -1,39 +1,61 @@
 require 'rails_helper'
 
-RSpec.feature 'User Show Page', type: :feature do
-  let(:user) { create(:user, bio: 'This is a test bio') }
-  let!(:posts) { create_list(:post, 3, user: user) }
+RSpec.describe 'User', type: :feature do
+  before :each do
+    @user1 = User.create!(name: 'John', photo: 'https://unsplash.com/photos/1.jpg', bio: 'Teacher from Mexico.',
+                          posts_counter: 3)
 
-  before do
-    visit user_path(user)
+    @post1 = Post.create!(author: @user1, title: 'First Post', text: 'First text', comments_counter: 0,
+                          likes_counter: 0)
+    @post2 = Post.create!(author: @user1, title: 'Second Post', text: 'First text', comments_counter: 0,
+                          likes_counter: 0)
+    @post3 = Post.create!(author: @user1, title: 'Third Post', text: 'First text', comments_counter: 0,
+                          likes_counter: 0)
   end
 
-  scenario 'displays user information' do
-    expect(page).to have_css("img[src*='#{user.profile_picture_url}']")
-    expect(page).to have_content(user.username)
-    expect(page).to have_content("Number of Posts: #{user.posts.count}")
-    expect(page).to have_content('Bio:')
-    expect(page).to have_content(user.bio)
-  end
-
-  scenario 'displays the first 3 posts' do
-    posts.each_with_index do |post, index|
-      within(".post:nth-of-type(#{index + 1})") do
-        expect(page).to have_content("📝 Post #{index + 1}: #{post.title}")
-        expect(page).to have_content(post.text)
-        expect(page).to have_content("Comments: 💬 #{post.comments.count} | Likes: 👍 #{post.likes.count}")
-      end
+  describe 'show' do
+    it 'should display the use profile picture' do
+      visit user_path(@user1)
+      expect(page).to have_css("img[src*='https://unsplash.com/photos/1.jpg']")
     end
-  end
 
-  scenario 'redirects to post show page when clicking a post' do
-    post = posts.first
-    click_link post.title
-    expect(current_path).to eq(user_post_path(user, post))
-  end
+    it 'should display the username of the user' do
+      visit user_path(@user1)
+      expect(page).to have_content(@user1.name)
+    end
 
-  scenario 'redirects to user posts index when clicking "See all posts"' do
-    click_link 'See all posts 📝'
-    expect(current_path).to eq(user_posts_path(user))
+    it 'should display the number of posts of the user' do
+      visit user_path(@user1)
+      expect(page).to have_content(@user1.posts_counter)
+    end
+
+    it 'should display the bio of the user' do
+      visit user_path(@user1)
+      expect(page).to have_content(@user1.bio)
+    end
+
+    it 'should display the user first 3 posts' do
+      visit user_path(@user1)
+      expect(page).to have_content(@post1.title)
+      expect(page).to have_content(@post2.title)
+      expect(page).to have_content(@post3.title)
+    end
+
+    it 'should have the button to display all posts' do
+      visit user_path(@user1)
+      expect(page).to have_link('See all posts')
+    end
+
+    it "should redirect me to the post's show page when clicking on the user's post" do
+      visit user_path(@user1)
+      click_link @post1.title
+      expect(page).to have_current_path(user_post_path(@user1, @post1))
+    end
+
+    it "should redirect me to the user's post's index page when clicking on the 'See all posts' button" do
+      visit user_path(@user1)
+      click_link 'See all posts'
+      expect(page).to have_current_path(user_posts_path(@user1))
+    end
   end
 end
