@@ -13,7 +13,6 @@ RSpec.describe UsersController, type: :request do
       get users_path
       expect(response).to render_template(:index)
     end
-
   end
 
   describe 'GET #show' do
