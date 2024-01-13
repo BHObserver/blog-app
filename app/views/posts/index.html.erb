@@ -28,5 +28,6 @@
   <% end %>
 
   <%= link_to 'Pagination', user_posts_path(@user), class: 'button' %>
-  <%= link_to 'Create New Post 📝', new_user_post_path(@user), class: 'button' %>
+  <%= link_to 'Create New Post 📝', new_user_post_path(@user), class: 'button' if @user == current_user && can?(:create, Post)  %>
+
 </div>
