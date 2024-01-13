@@ -1,7 +1,12 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable
+
   has_many :posts, foreign_key: 'author_id'
   has_many :comments
   has_many :likes
+
+  before_validation :set_default_posts_counter
 
   # Custom method: Returns the 3 most recent posts for a given user
   def recent_posts(limit = 3)
@@ -10,7 +15,7 @@ class User < ApplicationRecord
 
   # Custom method: Updates the posts counter for a user
   def update_user_posts_counter
-    user.update(posts_counter: user.posts.count)
+    update(posts_counter: posts.count)
   end
 
   # Custom method: Returns the 5 most recent comments for a given post
@@ -23,6 +28,9 @@ class User < ApplicationRecord
     update(likes_counter: likes.count)
   end
 
-  validates :name, presence: true
+  def set_default_posts_counter
+    self.posts_counter ||= 0
+  end
+
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end
