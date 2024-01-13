@@ -11,6 +11,16 @@
   </head>
 
   <body>
+
+  <div id="header">
+
+    <% if user_signed_in? %>
+      <%= link_to 'Sign Out', user_sign_out_path, method: :get %>
+    <% else %>
+      <%= link_to 'Sign In', new_user_session_path %>
+    <% end %>
+  </div>
+
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 

@@ -4,6 +4,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:posts).find_by_id(params[:id])
+    @user = User.find(params[:id])
+    return unless @user.nil?
+
+    flash[:notice] = 'Signed out successfully.'
+    redirect_to root_path
+  end
+
+  def user_sign_out
+    sign_out current_user
+    redirect_to new_user_session_path notice: 'Signed out successfully.'
   end
 end
