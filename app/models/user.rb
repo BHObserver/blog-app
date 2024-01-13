@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: 'author_id'
   has_many :comments
   has_many :likes
+  before_validation :set_default_posts_counter
 
   # Custom method: Returns the 3 most recent posts for a given user
   def recent_posts(limit = 3)
@@ -23,6 +24,10 @@ class User < ApplicationRecord
   # Custom method: Updates the likes counter for a post
   def update_post_likes_counter
     update(likes_counter: likes.count)
+  end
+
+  def set_default_posts_counter
+    self.posts_counter ||= 0
   end
 
   validates :name, presence: true
