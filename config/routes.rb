@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     root 'devise/sessions#new'
+    get '/user_sign_out', to: 'devise/sessions#new'
   end
-  get '/user_sign_out', to: 'users#user_sign_out'
 
   resources :users, only: [:index, :show] do
     resources :posts, only: [:index, :show, :new, :create] do
