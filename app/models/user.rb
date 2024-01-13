@@ -6,6 +6,14 @@ class User < ApplicationRecord
   has_many :likes
   before_validation :set_default_posts_counter
 
+  after_initialize :set_default_role, if: :new_record?
+
+  enum role: { user: 'user', admin: 'admin' }
+
+  def admin?
+    role == 'admin'
+  end
+
   # Custom method: Returns the 3 most recent posts for a given user
   def recent_posts(limit = 3)
     posts.order(created_at: :desc).limit(limit)
@@ -28,6 +36,10 @@ class User < ApplicationRecord
 
   def set_default_posts_counter
     self.posts_counter ||= 0
+  end
+
+  def set_default_role
+    self.role ||= :user
   end
 
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
