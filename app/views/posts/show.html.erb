@@ -11,12 +11,15 @@
       <p class="count">Comments:<%= @post.comments.count %>💬 | Likes:<%= @post.likes.count %>👍</p>
     </div>
       <p><%= @post.text %></p>
+      <%= button_to 'Delete Post 📝', user_post_path(user_id: @post.author_id, id: @post.id), method: :delete, class: 'button' if can? :destroy, @post %>
   </div>
 
   <div class="comments">
     <% @post.comments.each do |comment| %>
       <div class="comment">
-        <p>👤<%= @user.name %>: <%= comment.text %></p>
+        <p>👤<%= @user.name %>: <%= comment.text %>
+        <%= button_to 'Delete Comment', user_post_comment_path(user_id: comment.user_id, post_id: comment.post_id, id: comment.id), method: :delete, class: 'button' if can? :destroy, comment %>
+        </p>
       </div>
     <% end %>
   </div>
