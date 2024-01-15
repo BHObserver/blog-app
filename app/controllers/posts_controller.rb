@@ -1,28 +1,24 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
-    @user = User.includes(:posts).find(params[:user_id])
-    @posts = @user.posts
+    @user = User.includes(posts: :comments).find(params[:user_id])
   end
 
   def show
-    @user = User.includes(:posts).find(params[:user_id])
-    @post = @user.posts.find(params[:id])
+    @post = Post.find_by_id(params[:id])
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @post = Post.new
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @post = @user.posts.build(post_params)
-
+    @post = current_user.posts.new(post_params)
     if @post.save
-      flash[:success] = 'Post saved successfully'
-      redirect_to user_posts_path(@user)
+      redirect_to user_posts_path(current_user)
     else
-      flash.now[:error] = 'Error: Post could not be saved'
       render :new
     end
   end
