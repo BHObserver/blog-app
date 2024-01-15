@@ -1,16 +1,19 @@
-<h3 style="color: #336699; margin: 12px">Create a new post📝😍</h3>
+<h3 class="post-heading">Create a new post 📝</h3>
 
-<%= form_with model: [@user, @post], url: user_posts_path(@user), method: :post do |f| %>
-  <div class="inputs">
-    <%= f.label :title, style: "font-weight: bold;" %>
-    <%= f.text_field :title, style: "padding: 10px;" %>
+<%= form_with model: [@user, @post], url: user_posts_path(@user), method: :post, html: { class: 'post-form' } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title, class: 'form-label' %>
+    <%= f.text_field :title, class: 'form-input' %>
   </div>
-  <br>
-  <div class="inputs">
-    <%= f.label :text, style: "font-weight: bold;" %>
-    <%= f.text_area :text, style: "width: 190px; height: 80px; padding: 10px" %>
+
+  <div class="form-group">
+    <%= f.label :text, class: 'form-label' %>
+    <%= f.text_area :text, class: 'form-textarea' %>
   </div>
-  <div>
-    <%= f.submit "Submit the post📝", style: "background-color: #33cc33; margin: 10px 100px; color: #fff; padding: 10px 15px; border: none; cursor: pointer;" %>
+
+  <div class="form-group">
+    <%= f.submit "Submit the post 📝", class: 'submit-btn' %>
   </div>
+
 <% end %>
