@@ -7,23 +7,28 @@
 
   <div class="post">
     <div class="top-bar">
-      <h4>Post <%= @post.title %></h4>
-      <p class="count">Comments:<%= @post.comments.count %>💬 | Likes:<%= @post.likes.count %>👍</p>
+      <h4><%= @post.title %></h4>
+      <p class="count">Comments: <%= @post.comments.count %> 💬 | Likes: <%= @post.likes.count %> 👍</p>
     </div>
-      <p><%= @post.text %></p>
-      <%= button_to 'Delete Post 📝', user_post_path(user_id: @post.author_id, id: @post.id), method: :delete, class: 'button' if can? :destroy, @post %>
+    <p><%= @post.text %></p>
+    <%= button_to 'Delete Post 📝', user_post_path(user_id: @post.author_id, id: @post.id), method: :delete, class: 'button' if can? :destroy, @post %>
   </div>
 
   <div class="comments">
     <% @post.comments.each do |comment| %>
       <div class="comment">
-        <p>👤<%= @user.name %>: <%= comment.text %>
-        <%= button_to 'Delete Comment', user_post_comment_path(user_id: comment.user_id, post_id: comment.post_id, id: comment.id), method: :delete, class: 'button' if can? :destroy, comment %>
+        <p>
+          👤<%= User.find(Comment.find(comment.id).user_id).name %>: <%= comment.text %>
+          <%= button_to 'Delete Comment', user_post_comment_path(user_id: comment.user_id, post_id: comment.post_id, id: comment.id), method: :delete, class: 'button' if can? :destroy, comment %>
         </p>
       </div>
     <% end %>
   </div>
 
-  <%= link_to 'Create New Comment 💬', new_user_post_comment_path(@user, @post), class: 'button' %>
-  <%= link_to 'Like 👍', new_user_post_like_path(@user, @post), class: 'button' %>
+  <div class="container-opinions">
+    <%= link_to "Add new comment", new_user_post_comment_path(@post.author_id, @post), class: 'add-comment' %>
+    <%= form_with url: user_post_likes_path(@post.author_id, @post), method: :post, local: true, class: 'like-form' do |f| %>
+      <%= f.submit "Like", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
