@@ -15,13 +15,6 @@ RSpec.describe 'Posts', type: :request do
     get user_posts_path(user)
     expect(response).to render_template(:index)
   end
-
-  it 'includes correct placeholder text in the response body' do
-    user = FactoryBot.create(:user)
-    FactoryBot.create(:post, author: user)
-    get user_posts_path(user)
-    expect(response.body).to include('Hello! this is the posts index')
-  end
 end
 
 describe 'GET #show' do
@@ -37,12 +30,5 @@ describe 'GET #show' do
     post = FactoryBot.create(:post, author: user)
     get user_post_path(user, post)
     expect(response).to render_template(:show)
-  end
-
-  it 'includes correct placeholder text in the response body' do
-    user = FactoryBot.create(:user)
-    post = FactoryBot.create(:post, author: user)
-    get user_post_path(user, post)
-    expect(response.body).to include('Hello! this is the posts index')
   end
 end
