@@ -1,11 +1,11 @@
-<h3 style="color: #336699; margin: 12px 50px;">Create a new comment 💬</h3>
+<div class="comment-form-container">
+  <h3 class="comment-heading">Create a new comment 💬</h3>
 
-<%= form_with model: [@user, @post, @comment], url: user_post_comments_path(@user, @post), method: :post, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :text, "Comment:", class: "label" %>
-    <%= f.text_area :text, class: "textarea", placeholder: "Write your comment here..." %>
-  </div>
-  <div class="form-actions">
-    <%= f.submit "Submit Comment", class: "button" %>
-  </div>
-<% end %>
+  <%= form_with model: [@user, @post, @comment], url: user_post_comments_path, method: :post, local: true, scope: :comment, class: 'comment-form' do |form| %>
+    <div class="form-group">
+      <%= form.label :text, class: 'form-label' %><br>
+      <%= form.text_field :text, class: 'form-control' %>
+    </div>
+    <%= form.submit "Add Comment", class: "submit-comment" %>
+  <% end %>
+</div>
