@@ -6,6 +6,16 @@ Rails.application.routes.draw do
     root 'devise/sessions#new'
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :users do
+        resources :posts, only: [:index] do
+          resources :comments, only: [:index, :create]
+        end
+      end
+    end
+  end
+
   get '/user_sign_out', to: 'users#user_sign_out', as: :user_sign_out
 
 
