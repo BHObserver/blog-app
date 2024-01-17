@@ -4,7 +4,7 @@ class Api::V1::CommentsController < ApplicationController
   def index
     post = Post.find(params[:post_id])
     comments = post.comments
-    render json: { comments: comments }
+    render json: { comments: }
   end
 
   def create
@@ -13,7 +13,7 @@ class Api::V1::CommentsController < ApplicationController
     comment.user = current_user
 
     if comment.save
-      render json: { comment: comment }, status: :created
+      render json: { comment: }, status: :created
     else
       render json: { error: comment.errors.full_messages }, status: :unprocessable_entity
     end
