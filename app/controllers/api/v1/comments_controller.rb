@@ -4,7 +4,7 @@ class Api::V1::CommentsController < ApplicationController
 
   def index
     comments = @post.comments
-    render json: { comments: comments }
+    render json: { comments:  }
   end
 
   def create
