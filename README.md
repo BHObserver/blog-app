@@ -100,6 +100,50 @@ To run tests, run the following command:
   rspec spec/
 ```
 
+## 📡 Using the API with Postman
+
+To interact with the Blog App API using Postman, follow these steps:
+
+### 1. Obtain Authentication Token
+
+- Sign up or sign in to obtain an authentication token.
+  - Make a `POST` request to `/api/v1/auth/sign_up` or `/api/v1/auth/sign_in`.
+  - Include the necessary parameters (email, password) in the request body.
+  - The response will include an authentication token.
+
+### 2. Include Token in Headers
+
+- For subsequent requests, include the authentication token in the headers.
+  - Add a header with key `Authorization` and value `Bearer YOUR_TOKEN`.
+
+### 3. List User's Posts
+
+- Make a `GET` request to `/api/v1/users/:user_id/posts`.
+- Include the authentication token in the headers.
+
+### 4. List Comments for a Post
+
+- Make a `GET` request to `/api/v1/users/:user_id/posts/:post_id/comments`.
+- Include the authentication token in the headers.
+
+### 5. Add a Comment to a Post
+
+- Make a `POST` request to `/api/v1/users/:user_id/posts/:post_id/comments`.
+- Include the authentication token in the headers.
+- Provide the comment content in the request body.
+  - Example:
+    ```json
+    {
+      "comment": {
+        "content": "This is a great post!"
+      }
+    }
+    ```
+
+Feel free to use Postman to test the various API endpoints and explore the functionality of the Blog App API.
+
+
+
 ## 👥 Author <a name="authors"></a>
 
 👤 **Burhan Uddin**
