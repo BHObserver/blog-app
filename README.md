@@ -104,16 +104,21 @@ To run tests, run the following command:
 
 To interact with the Blog App API using Postman, follow these steps:
 
-### 1. Obtain Authentication Token
+### 1. Sign Up or Sign In to Obtain an Authentication Token
 
-- Sign up or sign in to obtain an authentication token.
-  - Make a `POST` request to `/api/v1/auth/sign_up` or `/api/v1/auth/sign_in`.
+- **Sign Up:**
+  - Make a `POST` request to `/api/v1/auth/sign_up`.
+  - Include the necessary parameters (e.g., email, password) in the request body.
+  - The response will include an authentication token.
+
+- **Sign In:**
+  - Make a `POST` request to `/api/v1/auth/sign_in`.
   - Include the necessary parameters (email, password) in the request body.
   - The response will include an authentication token.
 
 ### 2. Include Token in Headers
 
-- For subsequent requests, include the authentication token in the headers.
+- For subsequent requests, include the obtained authentication token in the headers.
   - Add a header with key `Authorization` and value `Bearer YOUR_TOKEN`.
 
 ### 3. List User's Posts
@@ -141,7 +146,6 @@ To interact with the Blog App API using Postman, follow these steps:
     ```
 
 Feel free to use Postman to test the various API endpoints and explore the functionality of the Blog App API.
-
 
 
 ## 👥 Author <a name="authors"></a>
